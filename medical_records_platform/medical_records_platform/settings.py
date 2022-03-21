@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapi.apps.MyapiConfig',
     'rest_framework',
-    'chat',
-    'channels',
 ]
 
 MIDDLEWARE = [
@@ -125,7 +123,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# mysite/settings.py
-# Channels
-ASGI_APPLICATION = 'medical_records_platform.asgi.application'
