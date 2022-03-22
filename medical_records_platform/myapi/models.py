@@ -44,47 +44,47 @@ class Role(models.Model):
     role = models.CharField(max_length=30, choices=ROLE_CHOICES)
     status = models.BooleanField()
     time_status = models.DateTimeField(auto_now=True, auto_now_add=False)
+
     def __str__(self):
         return self.user.first_name + ' ' + self.user.last_name + ' - ' + self.role
 
-# # User Measurements
-# class user(models.Model):
-#     userid = models.CharField(max_length=60)
-#     height = models.CharField(max_length=60)
-#     weight = models.CharField(max_length=60)
-#     blood_pressure = models.CharField(max_length=60)
-#     glucose = models.CharField(max_length=60)
-#     cholesterol = models.CharField(max_length=60)
-#     iron = models.CharField(max_length=60)
-#     pulse = models.CharField(max_length=60)
-#     blood_oxygen = models.CharField(max_length=60)
+# User Measurements
+class Measurements(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    height = models.FloatField()
+    weight = models.FloatField()
+    blood_pressure = models.CharField(max_length=60)
+    glucose = models.FloatField()
+    cholesterol = models.FloatField()
+    iron = models.FloatField()
+    pulse = models.FloatField()
+    blood_oxygen = models.FloatField()
 
+    def __str__(self):
+        return self.user.first_name + ' ' + self.user.last_name + ' - ' + self.role
 
-#     def __str__(self):
-#         return self.name
+# User History
+class History(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    family_history = models.CharField(max_length=300)
+    medical_history = models.CharField(max_length=300)
+    medications = models.CharField(max_length=300)
 
-# # User History
-# class user(models.Model):
-#     userid = models.CharField(max_length=60)
-#     family_history = models.CharField(max_length=60)
-#     medical_history = models.CharField(max_length=60)
-#     medications = models.CharField(max_length=60)
+    def __str__(self):
+        return self.user.first_name + ' ' + self.user.last_name + ' - ' + self.role
 
-#     def __str__(self):
-#         return self.name
+# User Billing
+class Billing(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    billing_address = models.CharField(max_length=60)
+    insurance_address = models.CharField(max_length=60)
+    member_id = models.CharField(max_length=60)
+    group_num = models.CharField(max_length=60)
+    insurance_plan_name = models.CharField(max_length=60)
+    insurance_plan_type = models.CharField(max_length=60)
+    holder_name = models.CharField(max_length=60)
+    holder_relation = models.CharField(max_length=60)
+    credit_card_num = models.CharField(max_length=60)
 
-# # User Billing
-# class user(models.Model):
-#     userid = models.CharField(max_length=60)
-#     billing_address = models.CharField(max_length=60)
-#     insurance_address = models.CharField(max_length=60)
-#     member_id = models.CharField(max_length=60)
-#     group_num = models.CharField(max_length=60)
-#     insurance_plan_name = models.CharField(max_length=60)
-#     insurance_plan_type = models.CharField(max_length=60)
-#     holder_name = models.CharField(max_length=60)
-#     holder_relation = models.CharField(max_length=60)
-#     credit_card_num = models.CharField(max_length=60)
-
-#     def __str__(self):
-#         return self.name
+    def __str__(self):
+        return self.user.first_name + ' ' + self.user.last_name + ' - ' + self.role

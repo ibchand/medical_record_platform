@@ -5,6 +5,9 @@ from .serializers import UserSerializer
 from .serializers import RoleSerializer
 from .models import User
 from .models import Role
+from .models import Measurements
+from .models import History
+from .models import Billing
 
 from django.http import JsonResponse
 from time import sleep
@@ -17,9 +20,21 @@ class RoleViewSet(viewsets.ModelViewSet):
     queryset = Role.objects.all().order_by('user')
     serializer_class = RoleSerializer
 
+class MeasurementsViewSet(viewsets.ModelViewSet):
+    queryset = Measurements.objects.all().order_by('user')
+    serializer_class = RoleSerializer
+    
+class HistoryViewSet(viewsets.ModelViewSet):
+    queryset = History.objects.all().order_by('user')
+    serializer_class = RoleSerializer
+
+class BillingViewSet(viewsets.ModelViewSet):
+    queryset = Billing.objects.all().order_by('user')
+    serializer_class = RoleSerializer
+
 def index(request):
-    json_payload = {
-        "message": "Hello world!"
-    }
-    sleep(10)
-    return JsonResponse(json_payload)
+json_payload = {
+    "message": "Hello world!"
+}
+sleep(10)
+return JsonResponse(json_payload)
