@@ -9,9 +9,6 @@ from .models import Measurements
 from .models import History
 from .models import Billing
 
-from django.http import JsonResponse
-from time import sleep
-
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('user_id')
     serializer_class = UserSerializer
@@ -31,10 +28,3 @@ class HistoryViewSet(viewsets.ModelViewSet):
 class BillingViewSet(viewsets.ModelViewSet):
     queryset = Billing.objects.all().order_by('user')
     serializer_class = RoleSerializer
-
-def index(request):
-json_payload = {
-    "message": "Hello world!"
-}
-sleep(10)
-return JsonResponse(json_payload)

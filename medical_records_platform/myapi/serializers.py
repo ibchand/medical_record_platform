@@ -7,12 +7,11 @@ from .models import Measurements
 from .models import History
 from .models import Billing
 
-
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = (
-            'user_id'
+            'user_id',
             'first_name',
             'last_name',
             'address',
